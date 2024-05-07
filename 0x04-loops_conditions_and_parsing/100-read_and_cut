@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#displays the content of the file /etc/passwd
+
+content_of="/etc/passwd"
+while read -r line
+do
+	echo "$line" | cut -d ":" --fields=1,2,6
+done < "$content_of"
