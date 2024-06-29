@@ -1,7 +1,6 @@
-#Install package 'flask --version 2.1.0'
+# Install Package 'Flask --version 2.1.0' using puppet
 
-exec { 'install flask':
-  command =>  'pip3 install flask==2.1.0',
-  path    =>  '/usr/bin/',
-  unless  =>  'pip3 list | grep flask',
+package { 'Flask':
+  ensure   => '2.1.0',
+  provider => 'pip3',
 }
