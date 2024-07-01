@@ -1,19 +1,10 @@
-#Using Puppet to make changes to our configuration file
+#!/usr/bin/env bash
+# Automating my Tasks using Puppet
 
-file {'/etc/ssh/ssh_config':
-  ensure => 'present'
-}
-
-file_line {'Turn off passwd auth':
+file { '/etc/ssh/ssh_config':
   ensure  => present,
-  path    => '/etc/ssh/ssh_config',
-  line    => 'PasswordAuthentication no',
-  replace => 'true'
-}
-
-file_line {'Declare identity file':
-  ensure  => present,
-  path    => '/etc/ssh/ssh_config',
-  line    => 'IdentityFile ~/.ssh/config',
-  replace => true
+  content => "
+      IdentityFile ~/.ssh/school
+      PasswordAuthentication no
+  ",
 }
