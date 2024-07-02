@@ -1,4 +1,4 @@
-#Using Puppet to make changes to our configuration file
+#Using Puppet to make changes to our client configuration file
 
 file {'/etc/ssh/ssh_config':
   ensure => 'present'
