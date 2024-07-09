@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Double the number of webservers 
+
+sudo apt-get update
+sudo apt-get install -y haproxy
+
+printf %s "
+frontend hbnb-lb_front
+        bind *:80
+        mode http
+        default_backend hbnb-lb_back
+backend hbnb-lb_back
+        balance roundrobin
+        server whytecode-web-01 34.207.237.54:80 check
+        server whytecode-web-02 54.160.84.46:80 check
+" >> /etc/haproxy/haproxy.cfg
+
+echo "ENABLED=1" >> /etc/default/haproxy
+
+service haproxy start
